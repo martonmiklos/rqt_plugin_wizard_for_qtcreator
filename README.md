@@ -1,10 +1,10 @@
 ### rqt plugin wizard for QtCreator
 
-Becacuse I always mess it up, and troubleshoot a few hours when creating a new plugin.
+Because I always mess it up, and troubleshoot a few hours when creating a new plugin.
 
 Now it is easy.
 
-Clone this repo to QtCreator install path/share/qtcreator/templates/wizards/projects/rqt_plugin/
+Clone this repo to <QtCreator's install path>/share/qtcreator/templates/wizards/projects/rqt_plugin
 
 And then:
 
