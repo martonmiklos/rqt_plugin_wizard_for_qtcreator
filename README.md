@@ -8,8 +8,16 @@ Clone this repo to QtCreator install path/share/qtcreator/templates/wizards/proj
 
 And then:
 
-(https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreators/master/screenshots/Screenshot_20190131_002246.png "A")
+![A](https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreator/master/screenshots/Screenshot_20190131_002246.png "A")
 
-(https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreators/master/screenshots/Screenshot_20190131_002318.png "B")
+![B](https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreator/master/screenshots/Screenshot_20190131_002318.png "B")
 
-(https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreators/master/screenshots/Screenshot_20190131_002349.png "C")
+![C](https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreator/master/screenshots/Screenshot_20190131_002349.png "C")
+
+And then enjoy with:
+```
+rqt --force-discover
+```
+
+![C](https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreator/master/screenshots/Screenshot_20190131_003343.png "C")
+
