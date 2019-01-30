@@ -1,0 +1,5 @@
+include/rqt_%{Plugin}/rqt_%{Plugin}_widget.h
+include/rqt_%{Plugin}/rqt_%{Plugin}.h
+src/rqt_%{Plugin}/rqt_%{Plugin}_widget.cpp
+src/rqt_%{Plugin}/rqt_%{Plugin}.cpp
+ui/rqt_%{Plugin}/rqt_%{Plugin}_widget.ui

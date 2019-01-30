@@ -1,0 +1,131 @@
+{
+    "version": 1,
+    "supportedProjectTypes": [ "CMakeProjectManager.CMakeProject" ],
+    "id": "An rqt plugin",
+    "category": "I.Projects",
+    "trDescription": "Creates a simple rqt plugin widget project.",
+    "trDisplayName": "rqt plugin",
+    "trDisplayCategory": "Non-Qt Project",
+    "icon": "ros_icon.png",
+    "enabled": "%{JS: [ %{Plugins} ].indexOf('CppEditor') >= 0 && ([ %{Plugins} ].indexOf('QmakeProjectManager') >= 0 || [ %{Plugins} ].indexOf('QbsProjectManager') >= 0 || [ %{Plugins} ].indexOf('CMakeProjectManager') >= 0)}",
+    "options":
+    [
+        { "key": "TargetPath", "value": "%{Path}" },
+        { "key": "Plugin", "value": "%{PluginName}" },
+        { "key": "CN", "value": "%{JS: Cpp.className('%{PluginName}')}" },
+        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard('%{PluginName}')}" }
+    ],
+    "pages":
+    [
+        {
+            "trDisplayName": "Project Location",
+            "trShortTitle": "Location",
+            "typeId": "Project"
+        },
+        {
+            "trDisplayName": "Plugin Information",
+            "trShortTitle": "Plugin info",
+            "typeId": "Fields",
+            "data": [
+                {
+                    "name": "PluginName",
+                    "trDisplayName": "Plugin name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": { 
+                        "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)",
+                        "trText": "test_plugin"
+                    }
+                },
+                {
+                    "name": "MaintainerName",
+                    "trDisplayName": "Maintainer name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": { 
+                        "trText": "test"
+                    }
+                },
+                {
+                    "name": "MaintainerEmail",
+                    "trDisplayName": "Maintainer e-mail address:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": {
+                        "validator": "([^@]+@[^\.]+\..+)",
+                        "trText": "test@test.hu"
+                    }
+                },
+                {
+                    "name": "Group",
+                    "trDisplayName": "Plugin group:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": {
+                        "trText": "rqt plugins"
+                    }
+                },
+                {
+                    "name": "PluginDescription",
+                    "trDisplayName": "Description:",
+                    "mandatory": false,
+                    "type": "TextEdit"
+                }
+            ]
+        }
+    ],
+    "generators":
+    [
+        {
+            "typeId": "File",
+            "data":
+            [
+                {
+                    "source": "plugin.creator",
+                    "target": "%{PluginName}.creator",
+                    "openAsProject": true
+                },
+                {
+                    "source": "plugin.includes",
+                    "target": "%{PluginName}.includes"
+                },
+                {
+                    "source": "plugin.files",
+                    "target": "%{PluginName}.files"
+                },
+                {
+                    "source": "package.xml",
+                    "target": "package.xml"
+                },
+                {
+                    "source": "plugin.xml",
+                    "target": "plugin.xml"
+                },
+                {
+                    "source": "CMakeLists.txt",
+                    "target": "CMakeLists.txt"
+                },
+                {
+                    "source": "rqt_plugin.h",
+                    "target": "include/rqt_%{PluginName}/rqt_%{PluginName}.h"
+                },
+                {
+                    "source": "rqt_plugin_widget.h",
+                    "target": "include/rqt_%{PluginName}/rqt_%{PluginName}_widget.h"
+                },
+                {
+                    "source": "rqt_plugin.cpp",
+                    "target": "src/rqt_%{PluginName}/rqt_%{PluginName}.cpp"
+                },
+                {
+                    "source": "rqt_plugin_widget.cpp",
+                    "target": "src/rqt_%{PluginName}/rqt_%{PluginName}_widget.cpp"
+                },
+                {
+                    "source": "rqt_plugin_widget.ui",
+                    "target": "ui/rqt_%{PluginName}/rqt_%{PluginName}_widget.ui"
+                }
+            ]
+        }
+    ]
+}
