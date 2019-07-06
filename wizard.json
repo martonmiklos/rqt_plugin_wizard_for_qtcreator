@@ -3,7 +3,7 @@
     "supportedProjectTypes": [ "CMakeProjectManager.CMakeProject" ],
     "id": "An rqt plugin",
     "category": "I.Projects",
-    "trDescription": "Creates a simple rqt plugin widget project.",
+    "trDescription": "Creates a simple widget rqt plugin project. <br><b>Make sure that the name would only contains lowercase letters, underscores and numbers.<br>The rqt_ prefix will be prepended.",
     "trDisplayName": "rqt plugin",
     "trDisplayCategory": "Non-Qt Project",
     "icon": "ros_icon.png",
@@ -11,9 +11,9 @@
     "options":
     [
         { "key": "TargetPath", "value": "%{Path}" },
-        { "key": "Plugin", "value": "%{PluginName}" },
-        { "key": "CN", "value": "%{JS: Cpp.className('%{PluginName}')}" },
-        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard('%{PluginName}')}" }
+        { "key": "Plugin", "value": "%{ProjectName}" },
+        { "key": "CN", "value": "%{JS: Cpp.className('%{ProjectName}')}" },
+        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard('%{ProjectName}')}" }
     ],
     "pages":
     [
@@ -27,16 +27,6 @@
             "trShortTitle": "Plugin info",
             "typeId": "Fields",
             "data": [
-                {
-                    "name": "PluginName",
-                    "trDisplayName": "Plugin name:",
-                    "mandatory": true,
-                    "type": "LineEdit",
-                    "data": { 
-                        "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)",
-                        "trText": "test_plugin"
-                    }
-                },
                 {
                     "name": "MaintainerName",
                     "trDisplayName": "Maintainer name:",
@@ -82,16 +72,20 @@
             [
                 {
                     "source": "plugin.creator",
-                    "target": "%{PluginName}.creator",
+                    "target": "%{ProjectName}.creator",
                     "openAsProject": true
                 },
                 {
                     "source": "plugin.includes",
-                    "target": "%{PluginName}.includes"
+                    "target": "%{ProjectName}.includes"
+                },
+                {
+                    "source": "plugin.config",
+                    "target": "%{ProjectName}.config"
                 },
                 {
                     "source": "plugin.files",
-                    "target": "%{PluginName}.files"
+                    "target": "%{ProjectName}.files"
                 },
                 {
                     "source": "package.xml",
@@ -107,23 +101,23 @@
                 },
                 {
                     "source": "rqt_plugin.h",
-                    "target": "include/rqt_%{PluginName}/rqt_%{PluginName}.h"
+                    "target": "include/rqt_%{ProjectName}/rqt_%{ProjectName}.h"
                 },
                 {
                     "source": "rqt_plugin_widget.h",
-                    "target": "include/rqt_%{PluginName}/rqt_%{PluginName}_widget.h"
+                    "target": "include/rqt_%{ProjectName}/rqt_%{ProjectName}_widget.h"
                 },
                 {
                     "source": "rqt_plugin.cpp",
-                    "target": "src/rqt_%{PluginName}/rqt_%{PluginName}.cpp"
+                    "target": "src/rqt_%{ProjectName}/rqt_%{ProjectName}.cpp"
                 },
                 {
                     "source": "rqt_plugin_widget.cpp",
-                    "target": "src/rqt_%{PluginName}/rqt_%{PluginName}_widget.cpp"
+                    "target": "src/rqt_%{ProjectName}/rqt_%{ProjectName}_widget.cpp"
                 },
                 {
                     "source": "rqt_plugin_widget.ui",
-                    "target": "ui/rqt_%{PluginName}/rqt_%{PluginName}_widget.ui"
+                    "target": "ui/rqt_%{ProjectName}/rqt_%{ProjectName}_widget.ui"
                 }
             ]
         }

@@ -33,6 +33,7 @@ set(rqt_%{Plugin}_UIS
 
 set(rqt_%{Plugin}_INCLUDE_DIRECTORIES
   include
+  include/rqt_%{Plugin}
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
