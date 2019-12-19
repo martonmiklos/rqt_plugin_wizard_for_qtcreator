@@ -1,12 +1,12 @@
-<library path="lib/librqt_%{Plugin}">
-  <class name="%{Plugin}" type="rqt_%{Plugin}::%{Plugin}" base_class_type="rqt_gui_cpp::Plugin">
+<library path="lib/lib%{Plugin}">
+  <class name="%{CN}" type="%{Plugin}::%{CN}" base_class_type="rqt_gui_cpp::Plugin">
     <description>%{PluginDescription}</description>
     <qtgui>
       <group>
         <label>%{Group}</label>
         <icon type="theme">folder</icon>
       </group>
-      <label>%{Plugin}</label>
+      <label>%{FN}</label>
       <statustip>%{PluginDescription}</statustip>
     </qtgui>
   </class>

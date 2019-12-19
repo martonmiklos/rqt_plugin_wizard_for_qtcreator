@@ -3,7 +3,7 @@
     "supportedProjectTypes": [ "CMakeProjectManager.CMakeProject" ],
     "id": "An rqt plugin",
     "category": "I.Projects",
-    "trDescription": "Creates a simple widget rqt plugin project. <br><b>Make sure that the name would only contains lowercase letters, underscores and numbers.<br>The rqt_ prefix will be prepended.",
+    "trDescription": "Creates a simple C++ rqt plugin project which will contain an empty QWidget.",
     "trDisplayName": "rqt plugin",
     "trDisplayCategory": "Non-Qt Project",
     "icon": "ros_icon.png",
@@ -11,9 +11,11 @@
     "options":
     [
         { "key": "TargetPath", "value": "%{Path}" },
-        { "key": "Plugin", "value": "%{ProjectName}" },
-        { "key": "CN", "value": "%{JS: Cpp.className('%{ProjectName}')}" },
-        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard('%{ProjectName}')}" }
+        { "key": "Plugin", "value": "%{PluginName}" },
+        { "key": "License", "value": "%{LicenseEdit}" },
+        { "key": "CN", "value": "%{ClassName}" },
+        { "key": "FN", "value": "%{FriendlyName}" },
+        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard('%{PluginName}')}" }
     ],
     "pages":
     [
@@ -28,12 +30,46 @@
             "typeId": "Fields",
             "data": [
                 {
+                    "name": "PluginName",
+                    "trDisplayName": "Plugin name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": {
+                        "trPlaceholder": "Must start with rqt_ and could contain only lower case letters, numbers and _",
+                        "trText": "rqt_test_plugin",
+                        "validator": "rqt_[a-z][a-z_0-9]*"
+                    }
+                },
+                {
+                    "name": "ClassName",
+                    "trDisplayName": "Class name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": {
+                        "trPlaceholder": "Name of the main class of the plugin",
+                        "validator": "[a-zA-Z][a-zA-Z0-9_]*",
+                        "trText": "TestPlugin"
+                    }
+                },
+                {
+                    "name": "FriendlyName",
+                    "trDisplayName": "Friendly name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": {
+                        "trPlaceholder": "This will appear in the rqt menu for e.g.",
+                        "validator": "^(?!\s*$).+",
+                        "trText": "Test plugin"
+                    }
+                },
+                {
                     "name": "MaintainerName",
                     "trDisplayName": "Maintainer name:",
                     "mandatory": true,
                     "type": "LineEdit",
                     "data": { 
-                        "trText": "test"
+                        "trText": "Jane Doe",
+                        "validator": "^(?!\s*$).+"
                     }
                 },
                 {
@@ -43,7 +79,18 @@
                     "type": "LineEdit",
                     "data": {
                         "validator": "([^@]+@[^\.]+\..+)",
-                        "trText": "test@test.hu"
+                        "trText": "jane.doe@example.com"
+                    }
+                },
+                {
+                    "name": "LicenseEdit",
+                    "trDisplayName": "License:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": {
+                        "trPlaceholder": "Commonly used license strings: BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3...",
+                        "validator": "^(?!\s*$).+",
+                        "trText": "LGPLv3"
                     }
                 },
                 {
@@ -52,6 +99,7 @@
                     "mandatory": true,
                     "type": "LineEdit",
                     "data": {
+                        "trPlaceholder": "rqt plugins",
                         "trText": "rqt plugins"
                     }
                 },
@@ -101,23 +149,23 @@
                 },
                 {
                     "source": "rqt_plugin.h",
-                    "target": "include/rqt_%{ProjectName}/rqt_%{ProjectName}.h"
+                    "target": "include/%{Plugin}/%{Plugin}.h"
                 },
                 {
                     "source": "rqt_plugin_widget.h",
-                    "target": "include/rqt_%{ProjectName}/rqt_%{ProjectName}_widget.h"
+                    "target": "include/%{Plugin}/%{Plugin}_widget.h"
                 },
                 {
                     "source": "rqt_plugin.cpp",
-                    "target": "src/rqt_%{ProjectName}/rqt_%{ProjectName}.cpp"
+                    "target": "src/%{Plugin}/%{Plugin}.cpp"
                 },
                 {
                     "source": "rqt_plugin_widget.cpp",
-                    "target": "src/rqt_%{ProjectName}/rqt_%{ProjectName}_widget.cpp"
+                    "target": "src/%{Plugin}/%{Plugin}_widget.cpp"
                 },
                 {
                     "source": "rqt_plugin_widget.ui",
-                    "target": "ui/rqt_%{ProjectName}/rqt_%{ProjectName}_widget.ui"
+                    "target": "ui/%{Plugin}/%{Plugin}_widget.ui"
                 }
             ]
         }

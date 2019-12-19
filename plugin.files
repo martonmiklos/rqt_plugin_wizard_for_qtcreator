@@ -1,5 +1,7 @@
-include/rqt_%{Plugin}/rqt_%{Plugin}_widget.h
-include/rqt_%{Plugin}/rqt_%{Plugin}.h
-src/rqt_%{Plugin}/rqt_%{Plugin}_widget.cpp
-src/rqt_%{Plugin}/rqt_%{Plugin}.cpp
-ui/rqt_%{Plugin}/rqt_%{Plugin}_widget.ui
+include/%{Plugin}/%{Plugin}_widget.h
+include/%{Plugin}/%{Plugin}.h
+src/%{Plugin}/%{Plugin}_widget.cpp
+src/%{Plugin}/%{Plugin}.cpp
+ui/%{Plugin}/%{Plugin}_widget.ui
+package.xml
+plugin.xml

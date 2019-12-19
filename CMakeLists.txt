@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rqt_%{Plugin})
+project(%{Plugin})
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -17,38 +17,42 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Qt5Widgets REQUIRED)
 
 
-set(rqt_%{Plugin}_SRCS
-  src/rqt_%{Plugin}/rqt_%{Plugin}.cpp
-  src/rqt_%{Plugin}/rqt_%{Plugin}_widget.cpp
+set(%{Plugin}_SRCS
+  src/%{Plugin}/%{Plugin}.cpp
+  src/%{Plugin}/%{Plugin}_widget.cpp
 )
 
-set(rqt_%{Plugin}_HDRS
-  include/rqt_%{Plugin}/rqt_%{Plugin}.h
-  include/rqt_%{Plugin}/rqt_%{Plugin}_widget.h
+set(%{Plugin}_HDRS
+  include/%{Plugin}/%{Plugin}.h
+  include/%{Plugin}/%{Plugin}_widget.h
 )
 
-set(rqt_%{Plugin}_UIS
-  ui/rqt_%{Plugin}/rqt_%{Plugin}_widget.ui
+set(%{Plugin}_moc_HDRS
+  include/%{Plugin}/%{Plugin}_widget.h
 )
 
-set(rqt_%{Plugin}_INCLUDE_DIRECTORIES
+set(%{Plugin}_UIS
+  ui/%{Plugin}/%{Plugin}_widget.ui
+)
+
+set(%{Plugin}_INCLUDE_DIRECTORIES
   include
-  include/rqt_%{Plugin}
+  include/%{Plugin}
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 
 catkin_package(
-  INCLUDE_DIRS ${rqt_%{Plugin}_INCLUDE_DIRECTORIES}
+  INCLUDE_DIRS ${%{Plugin}_INCLUDE_DIRECTORIES}
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS rqt_gui rqt_gui_cpp
 )
 
-qt5_wrap_cpp(rqt_%{Plugin}_MOCS ${rqt_%{Plugin}_HDRS})
-qt5_wrap_ui(rqt_%{Plugin}_UIS_H ${rqt_%{Plugin}_UIS})
+qt5_wrap_cpp(%{Plugin}_MOCS ${%{Plugin}_moc_HDRS})
+qt5_wrap_ui(%{Plugin}_UIS_H ${%{Plugin}_UIS})
 
-include_directories(${rqt_%{Plugin}_INCLUDE_DIRECTORIES} ${catkin_INCLUDE_DIRS})
-add_library(${PROJECT_NAME} ${rqt_%{Plugin}_SRCS} ${rqt_%{Plugin}_MOCS} ${rqt_%{Plugin}_UIS_H})
+include_directories(${%{Plugin}_INCLUDE_DIRECTORIES} ${catkin_INCLUDE_DIRS})
+add_library(${PROJECT_NAME} ${%{Plugin}_SRCS} ${%{Plugin}_MOCS} ${%{Plugin}_UIS_H})
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 find_package(class_loader)
@@ -141,7 +145,7 @@ class_loader_hide_library_symbols(${PROJECT_NAME})
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES rqt_%{Plugin}
+#  LIBRARIES %{Plugin}
 #  CATKIN_DEPENDS rqt_gui
 #  DEPENDS system_lib
 )
@@ -159,7 +163,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/rqt_%{Plugin}.cpp
+#   src/${PROJECT_NAME}/%{Plugin}.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -170,7 +174,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/rqt_%{Plugin}_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/%{Plugin}_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -204,10 +208,10 @@ install(TARGETS ${PROJECT_NAME}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
-install(PROGRAMS scripts/rqt_%{Plugin}
+install(PROGRAMS scripts/%{Plugin}
   DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 )
-install(PROGRAMS scripts/rqt_%{Plugin}
+install(PROGRAMS scripts/%{Plugin}
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -221,7 +225,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_rqt_%{Plugin}.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_%{Plugin}.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

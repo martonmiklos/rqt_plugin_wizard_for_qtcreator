@@ -4,9 +4,9 @@
 #include <rqt_gui_cpp/plugin.h>
 #include <std_msgs/String.h>
 
-#include <rqt_%{Plugin}/rqt_%{Plugin}_widget.h>
+#include <%{Plugin}/%{Plugin}_widget.h>
 
-namespace rqt_%{Plugin} {
+namespace %{Plugin} {
 
 class %{CN} : public rqt_gui_cpp::Plugin
 {
