@@ -25,8 +25,8 @@ rqt --force-discover
 
 - Start the QtCreator from a shell where the catkin env is setup properly (setup.sh is sourced)
 - Create the project with the wizard
-- Remove the make step add a custom build step like this one:
-![kép](https://user-images.githubusercontent.com/1609182/60760472-23c06400-a036-11e9-94a2-5161baff0eb3.png)
+- Remove the make step add a custom build step to call catkin_make (similar to this one):
+![setup_catkin_make_as_build_step](https://raw.githubusercontent.com/martonmiklos/rqt_plugin_wizard_for_qtcreator/master/screenshots/catkin_make.png)
 
 To the run configuration add  the following:
 ![kép](https://user-images.githubusercontent.com/1609182/60760484-536f6c00-a036-11e9-999d-ab778361aa5b.png)
